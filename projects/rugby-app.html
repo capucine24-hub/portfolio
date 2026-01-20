@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rugby App | iOS</title>
+
+  <style>
+    :root{
+      --bg: #f2f1ee;
+      --ink: #2f2f2f;
+      --grey: #6b6b6b;
+      --card: #ffffff;
+      --border: #e3e3e3;
+      --pill: #eef0f2;
+    }
+
+    *{ box-sizing: border-box; }
+
+    body{
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+
+    /* PAGE */
+    .page{
+      min-height: 100vh;
+      padding: clamp(18px, 3vw, 36px) clamp(16px, 5vw, 64px);
+    }
+
+    .content{
+      width: min(80vw, 1100px);
+      margin: 0 auto;
+      display: grid;
+      gap: 28px;
+    }
+
+    /* HEADER */
+    .topbar{
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    h1{
+      margin: 0;
+      font-size: clamp(26px, 4vw, 46px);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .subtitle{
+      margin: 6px 0 0;
+      font-size: 13px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--grey);
+    }
+
+    .close{
+      font-size: 32px;
+      text-decoration: none;
+      color: inherit;
+      line-height: 1;
+    }
+
+    /* HERO IMAGE */
+    .mediaFrame{
+      width: min(100%, 1848px);
+      aspect-ratio: 1848 / 1054;
+      background: #b6b6b6;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .mediaFrame img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* TEXT */
+    .hint{
+      text-align: center;
+      font-size: 14px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #777;
+      margin: 0;
+    }
+
+    .lede{
+      font-size: 18px;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* TAGS */
+    .tagRow{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .tag{
+      border: 1px solid #4b4b4b;
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    /* DEMO GRID */
+    .demoGrid{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 10px;
+    }
+
+    .demoCard{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .demoHead{
+      padding: 16px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .demoTitle{
+      margin: 0;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .pillRow{
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .pill{
+      background: var(--pill);
+      border: 1px solid #d6d9dd;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .demoMediaWrap{
+      padding: 0 16px;
+    }
+
+    .demoMedia{
+      background: black;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .demoMedia video{
+      width: 70%;  /* Match your scale value */
+      height: auto;
+      object-fit: contain;
+      display: block;
+      background: black;
+    }
+
+    .demoCaption{
+      padding: 14px 16px 18px;
+      font-size: 14px;
+      color: var(--grey);
+      margin: 0;
+    }
+
+    /* MOBILE */
+    @media (max-width: 800px){
+      .demoGrid{
+        grid-template-columns: 1fr;
+      }
+
+      .content{
+        width: min(92vw, 600px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <div class="content">
+
+      <!-- HEADER -->
+      <header class="topbar">
+        <div>
+          <h1>Rugby App – XML & Core Data</h1>
+          <p class="subtitle">iOS Development</p>
+        </div>
+        <a class="close" href="../portfolio.html">×</a>
+      </header>
+
+      <!-- MAIN IMAGE -->
+      <section class="mediaFrame">
+        <img src="../assets/images/rugby-app.png" alt="Rugby App preview">
+      </section>
+
+      <!-- TEXT -->
+      <p class="hint">Storyboard iOS demos</p>
+      <p class="lede">
+        Two small iOS demos built with Storyboard.
+        One uses XML parsing, the other uses Core Data.
+      </p>
+
+      <!-- TAGS -->
+      <ul class="tagRow">
+        <li class="tag">Storyboard</li>
+        <li class="tag">UIKit</li>
+        <li class="tag">XMLParser</li>
+        <li class="tag">Core Data</li>
+      </ul>
+
+      <!-- VIDEOS -->
+      <section class="demoGrid">
+
+        <!-- XML VIDEO -->
+        <article class="demoCard">
+          <header class="demoHead">
+            <h2 class="demoTitle">XMLDataRugbyPlayers.mov</h2>
+            <div class="pillRow">
+              <span class="pill">Uses XMLParser</span>
+              <span class="pill">Storyboard</span>
+            </div>
+          </header>
+
+          <div class="demoMediaWrap">
+            <div class="demoMedia">
+              <video controls>
+                <source src="../assets/video/xcode-1.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <p class="demoCaption">
+            Parsing XML data and displaying rugby player information.
+          </p>
+        </article>
+
+        <!-- CORE DATA VIDEO -->
+        <article class="demoCard">
+          <header class="demoHead">
+            <h2 class="demoTitle">CoreDataRugbyPlayers.mov</h2>
+            <div class="pillRow">
+              <span class="pill">Uses Core Data</span>
+              <span class="pill">Storyboard</span>
+            </div>
+          </header>
+
+          <div class="demoMediaWrap">
+            <div class="demoMedia">
+              <video controls>
+                <source src="../assets/video/xcode-2.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <p class="demoCaption">
+            Saving and loading favourite players using Core Data.
+          </p>
+        </article>
+
+      </section>
+
+    </div>
+  </main>
+</body>
+</html>

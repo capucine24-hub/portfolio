@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio | Capucine Le Bloa</title>
+
+  <style>
+    :root{
+      --bg: #96add6;
+      --black: #00408c;
+      --header-h: clamp(100px, 20vw, 160px);
+    }
+
+    *{ box-sizing: border-box; }
+
+    @view-transition{
+      navigation: auto;
+    }
+
+    body{
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--black);
+    }
+
+    .pageHeader{
+      background: rgba(255, 255, 255, 0.75);
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      font-size: clamp(40px, 6vw, 90px);
+      line-height: 1;
+      animation: headerFade 1s ease 0.8s forwards;
+    }
+
+    @supports (view-transition-name: portfolio-title){
+      .pageHeader{
+        view-transition-name: portfolio-title;
+      }
+    }
+
+    .pageHeader.holdBg{
+      background: rgba(255, 255, 255, 0.75);
+      animation: none;
+    }
+
+    .headerLink{
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    .oDot{
+      display: inline-block;
+      width: 0.8em;
+      height: 0.8em;
+      background: var(--black);
+      border-radius: 50%;
+      vertical-align: -0.05em;
+      margin: 0 0.08em;
+    }
+
+    @keyframes headerFade{
+      to{
+        background-color: rgba(255, 255, 255, 0);
+      }
+    }
+
+    .portfolioStage{
+      padding: clamp(24px, 5vw, 60px) clamp(16px, 6vw, 80px) 80px;
+      display: grid;
+      gap: clamp(20px, 4vw, 40px);
+    }
+
+    .portfolioIntro h2{
+      margin: 0;
+      font-size: clamp(18px, 2.4vw, 28px);
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .carousel{
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carouselTrack{
+      display: flex;
+      gap: clamp(10px, 2vw, 24px);
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding: 12px 0;
+      scrollbar-width: none;
+    }
+
+    .carouselTrack::-webkit-scrollbar{
+      display: none;
+    }
+
+    .projectCard{
+      flex: 0 0 clamp(150px, 14vw, 190px);
+      height: clamp(330px, 54vh, 470px);
+      border-radius: 999px;
+      background: var(--card-bg, #6a6a6a);
+      /* background-image: var(--card-image, none);
+      /background-size: cover;
+      background-position: center; */
+      position: relative;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 24px;
+      color: #000;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+      text-decoration: none;
+      scroll-snap-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .projectCard::after{
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      z-index: 0;
+    }
+
+
+    .projectCard span{
+      position: relative;
+      z-index: 1;
+      font-size: clamp(14px, 1.6vw, 18px);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .skillsSection{
+      display: grid;
+      gap: clamp(18px, 3.4vw, 34px);
+    }
+
+    .skillsTitle{
+      margin: 0;
+      font-size: clamp(22px, 3vw, 34px);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-align: left;
+    }
+
+    .skillsGroup{
+      display: grid;
+      gap: clamp(14px, 2.4vw, 22px);
+    }
+
+    .skillsGroupTitle{
+      margin: 0;
+      font-size: clamp(18px, 2.2vw, 26px);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      display: inline-block;
+      padding-bottom: 6px;
+      border-bottom: 2px solid #00408c;
+      width: fit-content;
+    }
+
+    .skillsGrid{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: clamp(14px, 2.4vw, 22px);
+      width: 100%;
+    }
+
+    .skillCard{
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 18px;
+      padding: 18px 16px;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
+      display: grid;
+      gap: 6px;
+      min-height: 140px;
+      text-align: center;
+      justify-items: center;
+    }
+
+    .skillName{
+      margin: 0;
+      font-size: clamp(14px, 1.8vw, 18px);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-top: 20px;
+    }
+
+    .skillDetail{
+      margin: 0;
+      font-size: 12px;
+      line-height: 1.4;
+      color: rgba(0, 0, 0, 0.65);
+      text-transform: uppercase;
+      letter-spacing: 0.10em;
+    }
+
+
+    @media (max-width: 700px){
+      .projectCard{
+        flex-basis: clamp(130px, 42vw, 170px);
+        height: clamp(300px, 52vh, 420px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="headerLink" href="index.html#menu">
+    <header class="pageHeader">P<span class="oDot"></span>RTF<span class="oDot"></span>LI<span class="oDot"></span></header>
+  </a>
+  <main class="portfolioStage">
+    <section class="carousel" aria-label="Project carousel">
+  <div class="carouselTrack">
+   
+    <a class="projectCard" href="projects/web-dev.html" style="background-image: url('assets/images/1.png'); background-size: cover; background-position: center;">
+      <span>Internet-Based Application</span>
+    </a>
+    <a class="projectCard is-active" href="projects/blender.html" style="background-image: url('assets/images/2.png'); background-size: cover; background-position: center;">
+      <span>Blender Animation</span>
+    </a>
+    <a class="projectCard" href="projects/accessibility.html" style="background-image: url('assets/images/3.png'); background-size: cover; background-position: center;">
+      <span>Indeed Redesign</span>
+    </a>
+    <a class="projectCard" href="projects/ready-buddy.html" style="background-image: url('assets/images/4.png'); background-size: cover; background-position: center;">
+      <span>Ready Buddy</span>
+    </a>
+    <a class="projectCard" href="projects/career-filter.html" style="background-image: url('assets/images/5.png'); background-size: cover; background-position: center;">
+      <span>Career Filter</span>
+    </a>
+    <a class="projectCard" href="projects/three-js.html" style="background-image: url('assets/images/6.png'); background-size: cover; background-position: center;">
+      <span>Three.js Animation</span>
+    </a>
+    <a class="projectCard" href="projects/rugby-app.html" style="background-image: url('assets/images/7.png'); background-size: cover; background-position: center;">
+      <span>Rugby App XML & Core Data</span>
+    </a>
+    <a class="projectCard" href="projects/p5-js.html" style="background-image: url('assets/images/8.png'); background-size: cover; background-position: center;">
+      <span>p5.js Sketches</span>
+    </a>
+  </div>
+</section>
+    <section class="skillsSection" aria-label="Skills">
+      <h2 class="skillsTitle">Skills</h2>
+      <section class="skillsGroup" aria-label="Web Development">
+        <h3 class="skillsGroupTitle">Web Development</h3>
+        <div class="skillsGrid">
+          <article class="skillCard">
+            <h4 class="skillName">HTML & CSS</h4>
+            <p class="skillDetail">Structured, responsive layouts</p>
+          </article>
+          <article class="skillCard">
+            <h4 class="skillName">JavaScript & p5.js</h4>
+            <p class="skillDetail">Interactive web sketches</p>
+          </article>
+          <article class="skillCard">
+            <h4 class="skillName">Three.js</h4>
+            <p class="skillDetail">3D scenes on the web</p>
+          </article>
+          <article class="skillCard">
+            <h4 class="skillName">PHP</h4>
+            <p class="skillDetail">Server-side scripting</p>
+          </article>
+          <article class="skillCard">
+            <h4 class="skillName">Markdown</h4>
+            <p class="skillDetail">Clean documentation structure</p>
+          </article>
+        </div>
+      </section>
+      <section class="skillsGroup" aria-label="Programming and technology">
+        <h3 class="skillsGroupTitle">Programming &amp; Technology</h3>
+        <div class="skillsGrid">
+          <article class="skillCard">
+            <h4 class="skillName">Xcode / iOS Development</h4>
+            <p class="skillDetail">Native app workflows</p>
+          </article>
+          <article class="skillCard">
+            <h4 class="skillName">Python</h4>
+            <p class="skillDetail">Automation and prototyping</p>
+          </article>
+          <article class="skillCard">
+            <h4 class="skillName">VR / AR</h4>
+            <p class="skillDetail">Immersive experience design</p>
+          </article>
+          <article class="skillCard">
+            <h4 class="skillName">ChucK</h4>
+            <p class="skillDetail">Audio programming language</p>
+          </article>
+        </div>
+      </section>
+      <section class="skillsGroup" aria-label="Design and media">
+        <h3 class="skillsGroupTitle">Design &amp; Media</h3>
+        <div class="skillsGrid">
+          <article class="skillCard">
+            <h4 class="skillName">Final Cut Pro</h4>
+            <p class="skillDetail">Video editing workflow</p>
+          </article>
+          <article class="skillCard">
+            <h4 class="skillName">Canva</h4>
+            <p class="skillDetail">Quick visual layouts</p>
+          </article>
+          <article class="skillCard">
+            <h4 class="skillName">Blender</h4>
+            <p class="skillDetail">3D modeling basics</p>
+          </article>
+          <article class="skillCard">
+            <h4 class="skillName">Accessibility / HCI</h4>
+            <p class="skillDetail">Inclusive design principles</p>
+          </article>
+          <article class="skillCard">
+            <h4 class="skillName">Figma</h4>
+            <p class="skillDetail">Interface prototyping</p>
+          </article>
+          <article class="skillCard">
+            <h4 class="skillName">Logic Pro</h4>
+            <p class="skillDetail">Audio production</p>
+          </article>
+        </div>
+      </section>
+      <section class="skillsGroup" aria-label="Storytelling and communication">
+        <h3 class="skillsGroupTitle">Storytelling &amp; Communication</h3>
+        <div class="skillsGrid">
+          <article class="skillCard">
+            <h4 class="skillName">Journalistic Writing</h4>
+            <p class="skillDetail">Clear narrative structure</p>
+          </article>
+          <article class="skillCard">
+            <h4 class="skillName">Content Analysis</h4>
+            <p class="skillDetail">Research and synthesis</p>
+          </article>
+          <article class="skillCard">
+            <h4 class="skillName">Video Creation</h4>
+            <p class="skillDetail">Concept to final cut</p>
+          </article>
+        </div>
+      </section>
+    </section>
+  </main>
+  <script>
+    const headerLink = document.querySelector(".headerLink");
+    const pageHeader = document.querySelector(".pageHeader");
+    if (headerLink && pageHeader){
+      headerLink.addEventListener("pointerdown", () => {
+        pageHeader.classList.add("holdBg");
+      });
+    }
+
+    const track = document.querySelector(".carouselTrack");
+    const cards = track ? Array.from(track.querySelectorAll(".projectCard")) : [];
+    let rafId = null;
+
+    const getGapSize = () => {
+      if (!track){
+        return 0;
+      }
+      const styles = getComputedStyle(track);
+      return parseFloat(styles.gap || "0");
+    };
+
+    const setActiveCard = () => {
+      if (!track || !cards.length){
+        return;
+      }
+      const trackRect = track.getBoundingClientRect();
+      const center = trackRect.left + trackRect.width / 2;
+      let closestCard = cards[0];
+      let closestDistance = Infinity;
+
+      cards.forEach((card) => {
+        const rect = card.getBoundingClientRect();
+        const cardCenter = rect.left + rect.width / 2;
+        const distance = Math.abs(center - cardCenter);
+        if (distance < closestDistance){
+          closestDistance = distance;
+          closestCard = card;
+        }
+      });
+
+      cards.forEach((card) => card.classList.remove("is-active"));
+      closestCard.classList.add("is-active");
+    };
+
+    const scheduleActiveUpdate = () => {
+      if (rafId){
+        cancelAnimationFrame(rafId);
+      }
+      rafId = requestAnimationFrame(setActiveCard);
+    };
+
+    if (track){
+      track.addEventListener("scroll", scheduleActiveUpdate, { passive: true });
+      window.addEventListener("resize", scheduleActiveUpdate);
+      cards.forEach((card) => {
+        card.addEventListener("click", () => {
+          card.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+        });
+      });
+    }
+
+    setActiveCard();
+  </script>
+</body>
+</html>

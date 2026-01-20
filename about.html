@@ -1,0 +1,788 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About | Capucine Le Bloa</title>
+
+  <style>
+    :root{
+      --bg: #96add6;
+      --black: #00408c;
+      --header-h: clamp(100px, 20vw, 160px);
+
+      /* Road length (bigger = longer) */
+      --world-width: 2150px;
+
+      /* Right panel width */
+      --panel-w: 220px;
+    }
+
+    *{ box-sizing: border-box; }
+
+    body{
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--black);
+    }
+
+    @view-transition{ navigation: auto; }
+
+    main{
+      min-height: calc(100vh - var(--header-h));
+      padding: clamp(18px, 3vw, 40px) clamp(16px, 4vw, 64px) clamp(24px, 4vw, 56px);
+      display: grid;
+      gap: clamp(24px, 4vw, 40px);
+    }
+
+    .pageHeader{
+      background: rgba(255, 255, 255, 0.75);
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      font-size: clamp(40px, 6vw, 90px);
+      line-height: 1;
+      animation: headerFade 1.2s ease 0.8s forwards;
+    }
+    .pageHeader.holdBg{ background: rgba(255, 255, 255, 0.75); animation: none; }
+
+    .headerLink{
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    .oDot{
+      display: inline-block;
+      width: 0.8em;
+      height: 0.8em;
+      background: var(--black);
+      border-radius: 50%;
+      vertical-align: -0.05em;
+      margin: 0 0.08em;
+    }
+
+    @keyframes headerFade{ to{ background-color: rgba(255, 255, 255, 0); } }
+
+    .aboutIntro{
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.6fr);
+      gap: clamp(16px, 4vw, 40px);
+      align-items: stretch;
+    }
+
+    .aboutText{
+      font-size: clamp(16px, 2vw, 20px);
+      line-height: 1.55;
+      text-align: justify;
+    }
+
+    .aboutPhoto{
+      width: min(360px, 100%);
+      height: 440px;
+      justify-self: end;
+      margin-top: 20px;
+      border-radius: clamp(16px, 2.5vw, 26px);
+      border: 2px solid rgba(0, 0, 0, 0.1);
+      display: block;
+      object-fit: cover;
+      background: rgba(255, 255, 255, 0.65);
+    }
+
+    @media (max-width: 900px){
+      .aboutIntro{ grid-template-columns: 1fr; }
+      .aboutPhoto{ justify-self: start; max-width: 160px; height: auto; }
+    }
+
+    .sectionTitle{
+      font-size: clamp(32px, 5vw, 72px);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      margin: 0 0 clamp(16px, 2vw, 24px);
+    }
+
+    /* ----------------------------
+       ROAD + RIGHT COMMAND PANEL
+       (NO extra background behind roadWrap)
+       ---------------------------- */
+
+    .roadShell{
+      display: grid;
+      grid-template-columns: 1fr var(--panel-w);
+      gap: 16px;
+      align-items: start;
+    }
+
+    .roadWrap{
+      position: relative;
+      height: 300px;
+      overflow: hidden;
+      background: none;
+      border: none;
+
+      /* Move the whole road area up/down */
+      margin-top: -85px;
+    }
+
+    /* World that slides */
+    .world{
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: var(--world-width);
+      height: 100%;
+      will-change: transform;
+      transform: translateX(0px);
+    }
+
+    @keyframes roadDash{
+      from{ background-position: 0 0; }
+      to{ background-position: -76px 0; }
+    }
+
+    .road{
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 34px;
+      height: 130px;
+      border-radius: 0;
+      overflow: hidden;
+      background: #3b3b45;
+      box-shadow:
+        inset 0 2px 0 rgba(255,255,255,0.12),
+        inset 0 -4px 0 rgba(0,0,0,0.30);
+      z-index: 1;
+    }
+
+    .road::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(#fff,#fff) top 14px left / 100% 4px no-repeat,
+        linear-gradient(#fff,#fff) bottom 14px left / 100% 4px no-repeat;
+      opacity: 0.9;
+      pointer-events:none;
+    }
+
+    .road::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      top:50%;
+      height:10px;
+      transform: translateY(-50%);
+      background: repeating-linear-gradient(
+        90deg,
+        rgba(255,255,255,0.95) 0 46px,
+        rgba(255,255,255,0) 46px 76px
+      );
+      animation: roadDash 0.9s linear infinite;
+      pointer-events:none;
+    }
+
+    .stops{
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 140px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .stop{
+      position: absolute;
+      left: var(--x);
+      transform: translateX(-50%);
+      width: 44px;
+      height: 40px;
+      border-radius: 10px;
+      background: #fff;
+      border: 2px solid rgba(0,0,0,0.18);
+      box-shadow: 0 10px 18px rgba(0,0,0,0.14);
+    }
+
+    .stopLabel{
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: 0.02em;
+      text-transform: none;
+      filter: saturate(1.2) contrast(1.1);
+    }
+
+    /* Car STARTS on the left */
+    .car{
+      position: absolute;
+      bottom: 80px;
+
+      /* start position */
+      left: 60px;
+
+      --carShift: 0px;
+      transform: translateX(var(--carShift));
+      width: 110px;
+      height: auto;
+      z-index: 3;
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,0.3));
+      pointer-events: none;
+      opacity: 1;
+      transition: opacity 0.18s ease, transform 0.08s linear;
+    }
+    .car.fade{ opacity: 0; }
+
+    .eduPopup{
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      top: 26px;
+      width: min(420px, 88vw);
+      background: #111;
+      color: #fff;
+      padding: 14px 16px;
+      border-radius: 14px;
+      font-size: 14px;
+      line-height: 1.45;
+      text-align: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      z-index: 6;
+    }
+    .eduPopup.show{
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+    .eduTitle{ font-weight: 900; margin-bottom: 4px; }
+    .eduDates{ opacity: 0.85; font-size: 13px; margin-bottom: 8px; }
+    .eduDesc{ opacity: 0.95; }
+
+    .panel{
+      position: sticky;
+      top: 28px;
+      align-self: start;
+      background: rgba(255,255,255,0.92);
+      margin-top: 40px;
+      border: 2px solid rgba(0,0,0,0.12);
+      border-radius: 18px;
+      padding: 10px 12px;
+      box-shadow: 0 12px 22px rgba(0,0,0,0.12);
+    }
+
+    .panelTitle{
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 12px;
+      opacity: 0.7;
+      margin-bottom: 8px;
+    }
+
+    .panelGrid{ display: grid; gap: 8px; }
+
+    .btnRow{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .btnRow.single{
+      grid-template-columns: 1fr;
+      margin-top: 8px;
+    }
+
+    .roadBtn{
+      height: 44px;
+      border-radius: 16px;
+      border: 2px solid rgba(0, 0, 0, 0.15);
+      background: rgba(255, 255, 255, 0.98);
+      font-size: 18px;
+      font-weight: 900;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      user-select: none;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.10);
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+    }
+
+    .roadBtn.wide{ border-radius: 12px; }
+
+    .roadBtn:active{
+      transform: scale(0.98);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.16);
+    }
+
+    .hint{
+      margin-top: 10px;
+      font-size: 12px;
+      opacity: 0.75;
+      line-height: 1.35;
+    }
+
+    @media (max-width: 900px){
+      .roadShell{ grid-template-columns: 1fr; }
+      .panel{ position: relative; top: auto; }
+    }
+
+    @media (max-width: 520px){
+      .roadWrap{ height: 270px; }
+      .road{ height: 110px; }
+      .stops{ bottom: 122px; }
+      .stop{ width: 50px; height: 42px; }
+      .car{ width: 92px; bottom: 68px; left: 44px; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="headerLink" href="index.html#menu">
+    <header class="pageHeader">AB<span class="oDot"></span>UT</header>
+  </a>
+
+  <main>
+   <section class="aboutIntro">
+  <div class="aboutText">
+    <p>
+      Interactive Media Master's graduate incoming! (Okay, ceremony's in March, but I'm claiming it now.) I'm drawn to building digital experiences that don't just work, they feel <em>good</em>. You know that moment when an interface just makes sense? When design and tech come together seamlessly? That's what I'm chasing. My Master's thesis explored exactly that, and it shaped how I see design now.
+    </p>
+    
+    <p>
+      I think people want something authentic. Something that doesn't just work, but actually makes them feel something. Because here's what I've learned: people will forget what you did, forget what you said, but they'll never forget how you made them feel. And honestly? I'd rather make someone smile than just check a box.
+    </p>
+    
+    <p>
+      Here’s the thing: I’m eager to jump into the real world. It’s terrifying and incredible at the same time; everything is about to be different, but it’s finally the start of something I actually want to help create.
+      And as Nick Miller once said, <em>"I'm not convinced I know how to read, I've just memorized a lot of words"</em>, which is honestly how learning new tools sometimes feels. But <em>cool cool cool cool cool, no doubt no doubt</em>, I'm ready for it.
+     </p>
+  </div>
+  
+  <img class="aboutPhoto" src="assets/images/profile.png" alt="Capucine Le Bloa" />
+</section>
+
+    <section class="education">
+      <h2 class="sectionTitle">Education</h2>
+
+      <div class="roadShell">
+        <!-- ROAD VIEWPORT -->
+        <div class="roadWrap" id="roadWrap">
+          <div class="eduPopup" id="eduPopup" aria-live="polite">
+            <div class="eduTitle" id="eduTitle">Title</div>
+            <div class="eduDates" id="eduDates">Dates</div>
+            <div class="eduDesc" id="eduDesc">Description</div>
+          </div>
+
+          <img class="car" id="car" src="assets/images/car-1.png" alt="" aria-hidden="true" />
+
+          <div class="world" id="world" aria-hidden="true">
+            <div class="road"></div>
+
+            <div class="stops" id="stops">
+              <div class="stop" style="--x: 200px;" data-stop-id="bachelor"
+                data-title="Bachelor in Information and Communication"
+                data-dates="Sep 2021 → May 2024"
+                data-desc="University Bordeaux Montaigne">
+                <div class="stopLabel">🇫🇷</div>
+              </div>
+
+              <div class="stop" style="--x: 400px;" data-stop-id="madrid"
+                data-title="Universidad Complutense de Madrid (Spain)"
+                data-dates="Sep 2022 → Jan 2023"
+                data-desc="Exchange semester during the bachelor">
+                <div class="stopLabel">🇪🇸</div>
+              </div>
+
+              <div class="stop" style="--x: 600px;" data-stop-id="lisbon"
+                data-title="NOVA FCSH (Portugal)"
+                data-dates="Sep 2023 → Dec 2023"
+                data-desc="Exchange semester during the bachelor">
+                <div class="stopLabel">🇵🇹</div>
+              </div>
+
+              <div class="stop" style="--x: 800px;" data-stop-id="siba"
+                data-title="SIBA Internship"
+                data-dates="Jan 2024 → Feb 2024"
+                data-desc="Bassin D'Arcachon">
+                <div class="stopLabel">🇫🇷</div>
+              </div>
+
+              <div class="stop" style="--x: 1000px;" data-stop-id="master"
+                data-title="Bachelor completed"
+                data-dates="May 2024"
+                data-desc="Université Bordeaux Montaigne">
+                <div class="stopLabel">🇫🇷</div>
+              </div>
+
+               <div class="stop" style="--x: 1200px;" data-stop-id="master"
+                data-title="Master in Interactive Media"
+                data-dates="Sep 2024 → Mar 2026"
+                data-desc="University College Cork, Ireland">
+                <div class="stopLabel">🇮🇪</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT COMMAND PANEL -->
+        <aside class="panel" aria-label="Command panel">
+          <div class="panelTitle">Controls</div>
+
+          <div class="panelGrid">
+            <div class="btnRow">
+              <button class="roadBtn" id="btnLeft" type="button" aria-label="Move left">←</button>
+              <button class="roadBtn" id="btnRight" type="button" aria-label="Move right">→</button>
+            </div>
+
+            <div class="btnRow single">
+              <button class="roadBtn wide" id="btnPlayPause" type="button" aria-label="Pause">⏸</button>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Header “hold background” behavior
+    const headerLink = document.querySelector(".headerLink");
+    const pageHeader = document.querySelector(".pageHeader");
+    if (headerLink && pageHeader){
+      headerLink.addEventListener("pointerdown", () => pageHeader.classList.add("holdBg"));
+    }
+
+    // Elements
+    const roadWrap = document.getElementById("roadWrap");
+    const world = document.getElementById("world");
+    const car = document.getElementById("car");
+
+    const btnLeft = document.getElementById("btnLeft");
+    const btnRight = document.getElementById("btnRight");
+    const btnPlayPause = document.getElementById("btnPlayPause");
+
+    const stopsEl = document.getElementById("stops");
+    const stops = Array.from(stopsEl.querySelectorAll(".stop"));
+
+    const eduPopup = document.getElementById("eduPopup");
+    const eduTitle = document.getElementById("eduTitle");
+    const eduDates = document.getElementById("eduDates");
+    const eduDesc = document.getElementById("eduDesc");
+
+    // Settings
+    const step = 18;
+    const autoSpeed = 70;
+    const endPauseMs = 1600;
+    const stopPauseMs = 2000;
+
+    // Car wiggle zone (only to the RIGHT since we're starting at the beginning)
+    const carRange = 120;   // how far the car can move right before the world scrolls
+    let carLocal = 0;
+
+    // World scroll
+    let progress = 0;
+
+    // State
+    let isPlaying = true;
+    let isEnding = false;
+    let isStopPaused = false;
+    let endTimer = null;
+    let stopTimer = null;
+    let lastStopId = null;
+    let lastTS = null;
+
+    function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
+
+    function getWorldWidth(){
+      const cssVal = getComputedStyle(document.documentElement)
+        .getPropertyValue("--world-width")
+        .trim();
+      const num = parseFloat(cssVal);
+      return Number.isFinite(num) ? num : world.scrollWidth;
+    }
+
+    // Start aligned left, end aligned right
+    function getMaxProgress(){
+      const ww = getWorldWidth();
+      const vw = roadWrap.clientWidth;
+      return Math.max(0, ww - vw);
+    }
+
+    function setProgress(next){
+      const maxP = getMaxProgress();
+      progress = clamp(next, 0, maxP);
+      render();
+    }
+
+    function render(){
+      const maxP = getMaxProgress();
+
+      // World position (start left, end right)
+      let tx = -progress;
+      if (progress <= 0) tx = 0;
+      if (progress >= maxP) tx = -maxP;
+      world.style.transform = `translateX(${tx}px)`;
+
+      // Car wiggle
+      car.style.setProperty("--carShift", `${carLocal}px`);
+
+      updatePopupIfOnStop();
+    }
+
+    function getHitStop(){
+      const carRect = car.getBoundingClientRect();
+      const carCenter = carRect.left + (carRect.width / 2);
+      const snapDistance = 30;
+
+      let hit = null;
+      for (const stop of stops){
+        const r = stop.getBoundingClientRect();
+        const stopCenter = r.left + (r.width / 2);
+        if (Math.abs(carCenter - stopCenter) <= snapDistance){
+          hit = stop;
+          break;
+        }
+      }
+      return hit;
+    }
+
+    function updatePopupIfOnStop(){
+      const hit = getHitStop();
+      if (!hit){
+        eduPopup.classList.remove("show");
+        lastStopId = null;
+        return;
+      }
+
+      eduTitle.textContent = hit.dataset.title || "";
+      eduDates.textContent = hit.dataset.dates || "";
+      eduDesc.textContent = hit.dataset.desc || "";
+      eduPopup.classList.add("show");
+    }
+
+    function clearEndTimer(){
+      if (endTimer){
+        clearTimeout(endTimer);
+        endTimer = null;
+      }
+    }
+
+    function clearStopTimer(){
+      if (stopTimer){
+        clearTimeout(stopTimer);
+        stopTimer = null;
+      }
+    }
+
+    function triggerStopPause(hit){
+      if (!hit) return;
+      const stopId = hit.dataset.stopId || "";
+      if (isStopPaused || stopId === lastStopId) return;
+
+      isStopPaused = true;
+      lastStopId = stopId;
+      clearStopTimer();
+      stopTimer = setTimeout(() => {
+        isStopPaused = false;
+      }, stopPauseMs);
+    }
+
+    function triggerEndPauseAndRestart(){
+      if (isEnding) return;
+      isEnding = true;
+      isPlaying = false;
+
+      clearEndTimer();
+      endTimer = setTimeout(() => {
+        car.classList.add("fade");
+
+        setTimeout(() => {
+          // Back to beginning
+          progress = 0;
+          carLocal = 0;
+          car.classList.remove("fade");
+          setProgress(0);
+
+          isEnding = false;
+          isPlaying = true;
+          lastTS = null;
+        }, 260);
+      }, endPauseMs);
+    }
+
+    // Manual move:
+    // - allow LEFT only while carLocal > 0 OR progress > 0
+    // - otherwise "solid" start
+    function moveManual(dx){
+      if (isEnding){
+        clearEndTimer();
+        isEnding = false;
+      }
+      if (isStopPaused){
+        clearStopTimer();
+        isStopPaused = false;
+      }
+
+      // Block moving left at the very beginning
+      if (dx < 0 && progress === 0 && carLocal <= 0){
+        carLocal = 0;
+        render();
+        return;
+      }
+
+      // If we're at the beginning, we only wiggle to the right first
+      if (dx > 0){
+        const nextCar = carLocal + dx;
+
+        if (nextCar <= carRange){
+          carLocal = nextCar;
+          render();
+          return;
+        }
+
+        // spill into world scroll
+        const spill = nextCar - carRange;
+        carLocal = carRange;
+        setProgress(progress + spill);
+        return;
+      }
+
+      // Moving LEFT:
+      // first reduce world scroll, then reduce wiggle
+      if (progress > 0){
+        setProgress(progress + dx); // dx negative
+        return;
+      }
+
+      // if progress is 0, reduce carLocal
+      carLocal = clamp(carLocal + dx, 0, carRange);
+      render();
+    }
+
+    // Autoplay:
+    // moves right, uses wiggle then scroll, and pauses at end
+    function autoMove(dx){
+      const hit = getHitStop();
+      if (hit){
+        triggerStopPause(hit);
+        if (isStopPaused) return;
+      }
+
+      const maxP = getMaxProgress();
+
+      // If camera is at end and car is at max wiggle -> end pause
+      if (progress >= maxP && carLocal >= carRange){
+        triggerEndPauseAndRestart();
+        return;
+      }
+
+      const nextCar = carLocal + dx;
+
+      if (nextCar <= carRange){
+        carLocal = nextCar;
+        render();
+        return;
+      }
+
+      const spill = nextCar - carRange;
+      carLocal = carRange;
+      setProgress(progress + spill);
+
+      // If we hit end after scrolling
+      if (progress >= maxP){
+        progress = maxP;
+        render();
+        if (carLocal >= carRange){
+          triggerEndPauseAndRestart();
+        }
+      }
+    }
+
+    function tick(ts){
+      if (!lastTS) lastTS = ts;
+      const dt = ts - lastTS;
+      lastTS = ts;
+
+      if (isPlaying && !isEnding && !isStopPaused){
+        const dx = (dt / 1000) * autoSpeed;
+        autoMove(dx);
+      }
+
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+
+    // Press-and-hold buttons
+    let holdTimer = null;
+    function startHold(dx){
+      stopHold();
+      moveManual(dx);
+      holdTimer = window.setInterval(() => moveManual(dx), 60);
+    }
+    function stopHold(){
+      if (holdTimer){
+        clearInterval(holdTimer);
+        holdTimer = null;
+      }
+    }
+
+    btnLeft?.addEventListener("pointerdown", () => startHold(-step));
+    btnRight?.addEventListener("pointerdown", () => startHold(step));
+    btnLeft?.addEventListener("pointerup", stopHold);
+    btnRight?.addEventListener("pointerup", stopHold);
+    btnLeft?.addEventListener("pointerleave", stopHold);
+    btnRight?.addEventListener("pointerleave", stopHold);
+    btnLeft?.addEventListener("pointercancel", stopHold);
+    btnRight?.addEventListener("pointercancel", stopHold);
+
+    function updatePlayPauseButton(){
+      if (!btnPlayPause) return;
+      const isPaused = !isPlaying;
+      btnPlayPause.textContent = isPaused ? "▶" : "⏸";
+      btnPlayPause.setAttribute("aria-label", isPaused ? "Play" : "Pause");
+    }
+
+    // Play/Pause
+    btnPlayPause?.addEventListener("click", () => {
+      isPlaying = !isPlaying;
+      updatePlayPauseButton();
+    });
+
+    // Keyboard
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft"){
+        e.preventDefault();
+        moveManual(-step);
+      }
+      if (e.key === "ArrowRight"){
+        e.preventDefault();
+        moveManual(step);
+      }
+      if (e.key === " "){
+        e.preventDefault();
+        isPlaying = !isPlaying;
+        updatePlayPauseButton();
+      }
+    });
+
+    // Resize safety
+    window.addEventListener("resize", () => {
+      setProgress(progress);
+    });
+
+    // Initial
+    setProgress(0);
+    updatePlayPauseButton();
+  </script>
+</body>
+</html>

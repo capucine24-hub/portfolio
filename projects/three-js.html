@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Three.js Animation | WebGL</title>
+  <style>
+    :root{
+      --bg: #f2f1ee;
+      --ink: #2f2f2f;
+      --accent: #a6a6a6;
+    }
+
+    *{ box-sizing: border-box; }
+
+    body{
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+
+    .page{
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      padding: clamp(18px, 3vw, 36px) clamp(16px, 5vw, 64px);
+      gap: clamp(18px, 4vw, 36px);
+    }
+
+    .content{
+      width: min(78vw, 900px);
+      margin: 0 auto;
+      display: grid;
+      gap: clamp(18px, 4vw, 36px);
+    }
+
+    .topbar{
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .titleBlock{
+      display: grid;
+      gap: 8px;
+    }
+
+    h1{
+      margin: 0;
+      font-size: clamp(24px, 4.2vw, 48px);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .subtitle{
+      margin: 0;
+      font-size: clamp(11px, 1.4vw, 14px);
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: #6b6b6b;
+    }
+
+    .close{
+      font-size: clamp(24px, 2.6vw, 32px);
+      text-decoration: none;
+      color: inherit;
+      line-height: 1;
+      padding: 4px 6px;
+    }
+
+    .mediaFrame{
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background: #b6b6b6;
+      display: grid;
+      place-items: center;
+      color: rgba(0, 0, 0, 0.35);
+      font-size: clamp(14px, 2vw, 18px);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+    }
+
+    .mediaFrame img,
+    .mediaFrame video{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .mediaFrame.wide{
+      width: 100%;
+      aspect-ratio: 16 / 9;
+}
+
+    .mediaFrame.contain video{
+      object-fit: contain;
+    }
+
+    .hint{
+      margin: 0;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #777;
+      text-align: center;
+    }
+
+    .lede{
+      margin: 0;
+      font-size: clamp(16px, 2.2vw, 20px);
+      line-height: 1.5;
+      color: #3a3a3a;
+    }
+
+    .tagRow{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .tag{
+      border: 1px solid #4b4b4b;
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 700px){
+      .content{
+        width: min(86vw, 520px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="content">
+      <header class="topbar">
+        <div class="titleBlock">
+          <h1>Beginner Three.js Animation</h1>
+          <p class="subtitle">WebGL Motion Study</p>
+        </div>
+        <a class="close" href="../portfolio.html" aria-label="Back to portfolio">×</a>
+      </header>
+      <section class="mediaFrame wide contain" aria-label="Three.js animation video">
+        <video src="../assets/video/three-js.mp4" autoplay muted loop playsinline controls></video>
+      </section>
+
+      <p class="hint">Animation preview</p>
+     
+    </div>
+  </main>
+</body>
+</html>

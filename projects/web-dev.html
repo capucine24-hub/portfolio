@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Internet-Based Application | Web Dev</title>
+  <style>
+    :root{
+      --bg: #f2f1ee;
+      --ink: #2f2f2f;
+      --accent: #a6a6a6;
+    }
+
+    *{ box-sizing: border-box; }
+
+    body{
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+
+    .page{
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      padding: clamp(18px, 3vw, 36px) clamp(16px, 5vw, 64px);
+      gap: clamp(18px, 4vw, 36px);
+    }
+
+    .content{
+      width: min(78vw, 900px);
+      margin: 0 auto;
+      display: grid;
+      gap: clamp(18px, 4vw, 36px);
+    }
+
+    .topbar{
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .titleBlock{
+      display: grid;
+      gap: 8px;
+    }
+
+    h1{
+      margin: 0;
+      font-size: clamp(24px, 4.2vw, 48px);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .subtitle{
+      margin: 0;
+      font-size: clamp(11px, 1.4vw, 14px);
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: #6b6b6b;
+    }
+
+    .close{
+      font-size: clamp(24px, 2.6vw, 32px);
+      text-decoration: none;
+      color: inherit;
+      line-height: 1;
+      padding: 4px 6px;
+    }
+
+    .mediaFrame{
+      width: min(100%, 1848px);
+      aspect-ratio: 1848 / 1054;
+      background: #b6b6b6;
+      display: grid;
+      place-items: center;
+      color: rgba(0, 0, 0, 0.35);
+      font-size: clamp(14px, 2vw, 18px);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+    }
+
+    .mediaFrame img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hint{
+      margin: 0;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #777;
+      text-align: center;
+    }
+
+    .lede{
+      margin: 0;
+      font-size: clamp(16px, 2.2vw, 20px);
+      line-height: 1.5;
+      color: #3a3a3a;
+    }
+
+    .tagRow{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+    }
+
+    .tag{
+      border: 1px solid #4b4b4b;
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .section{
+      display: grid;
+      gap: 14px;
+    }
+
+    .sectionTitle{
+      margin: 0;
+      font-size: clamp(18px, 2.4vw, 26px);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .link{
+      font-size: 14px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .link:hover{
+      text-decoration: underline;
+    }
+
+    .bullets{
+      margin: 0;
+      padding-left: 18px;
+      line-height: 1.5;
+      color: #3a3a3a;
+    }
+
+    .note{
+      margin: 0;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #6b6b6b;
+    }
+
+    @media (max-width: 700px){
+      .content{
+        width: min(86vw, 520px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="content">
+      <header class="topbar">
+        <div class="titleBlock">
+          <h1>Internet-Based Application</h1>
+          <p class="subtitle">Server-side Features + CMS</p>
+        </div>
+        <a class="close" href="../portfolio.html" aria-label="Back to portfolio">×</a>
+      </header>
+      <section class="mediaFrame" aria-label="Internet-based application preview">
+        <img src="../assets/images/web-dev1.png" alt="Preview of the internet-based application CMS project" loading="lazy" />
+      </section>
+      <p class="hint">Course project highlight</p>
+      <p class="lede">A 3-part course project exploring server-side features: CMS basics, sessions/auth, and form handling.</p>
+      <ul class="tagRow" aria-label="Project skills">
+        <li class="tag">HTML</li>
+        <li class="tag">PHP</li>
+        <li class="tag">AJAX</li>
+        <li class="tag">JSON</li>
+      </ul>
+
+      <section class="section" aria-labelledby="cms-fundamentals">
+        <h2 class="sectionTitle" id="cms-fundamentals">PHP CMS Fundamentals</h2>
+        <a class="link" href="https://cs1.ucc.ie/~calb1/CS6113/Assignment%201/cms.php" aria-label="Visit PHP CMS Fundamentals" target="_blank" rel="noopener">Live Demo</a>
+        <ul class="bullets">
+          <li>Server-side CMS with Markdown rendering, theme switching, robust error handling, and persistent page counter with reset functionality.</li>
+        </ul>
+      </section>
+
+      <section class="section" aria-labelledby="ajax-cms">
+        <h2 class="sectionTitle" id="ajax-cms">AJAX-Based CMS</h2>
+        <a class="link" href="https://cs1.ucc.ie/~calb1/CS6113/Assignment2/cms2.php" aria-label="Visit AJAX-based CMS" target="_blank" rel="noopener">Live Demo</a>
+        <ul class="bullets">
+          <li>Asynchronous content loading with fetch API, remote Markdown rendering, status reporting, and soft fail error handling.</li>
+        </ul>
+      </section>
+
+      <section class="section" aria-labelledby="spa-cms">
+        <h2 class="sectionTitle" id="spa-cms">Single Page Application CMS</h2>
+        <a class="link" href="https://cs1.ucc.ie/~calb1/CS6113/Assignment3/cms3.html" aria-label="Visit single page application CMS" target="_blank" rel="noopener">Live Demo</a>
+        <ul class="bullets">
+          <li>Dynamic JSON-based CMS with automatic navigation generation, theme switching, and toggle between abstract and full content views.</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
