@@ -358,6 +358,34 @@ body{
   opacity: 0.9;
   margin-bottom: 20px;
 }
+
+@media (max-width: 480px){
+
+  :root{
+    --big-font: clamp(48px, 14vw, 96px);
+    --dot: 20px;
+    --dot-pad: 16px;
+  }
+
+  .word{
+    white-space: normal;
+    line-height: 1;
+  }
+
+  .bottomRow{
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tag{
+    width: 100%;
+  }
+
+  .screen.hero{
+    padding-bottom: 64px;
+  }
+
+}
 </style>
 </head>
 
