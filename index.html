@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>C Portfolio</title>
+  <style>
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background: white;
+    overflow-x: hidden;
+  }
+
+  body.is-loading main,
+  body.is-loading .site-header {
+    opacity: 0;
+  }
+
+  body.is-loading #webgl-c {
+    opacity: 0;
+  }
+
+  #webgl-c {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+</style>
+ 
+  </head>
+
+<body class="is-loading">
+      <header class="site-header">
+  <a href="#" class="site-logo" aria-label="Back to top">
+    CLB
+  </a>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="#projects">Work</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+    <canvas id="webgl-c"></canvas>
+
+    <div class="scroll-cue" aria-hidden="true">
+  <span>scroll to enter</span>
+</div>
+    <main>
+  <section class="hero"></section>
+
+  <section class="projects" id="projects">
+    <div class="projects-header">
+      <p class="section-kicker">Selected work</p>
+      <h1>Projects</h1>
+    </div>
+
+    <div class="projects-grid">
+    <a class="project-card" href="/portfolio/projects/ready-buddy/">
+        <div class="project-media">
+          <img src="./projects/ready-buddy/assets/ready-buddy-cover.webp" alt="Ready Buddy app preview" />
+        </div>
+
+        <div class="project-info">
+          <span>01</span>
+          <h2>Ready Buddy</h2>
+        </div>
+      </a>
+
+      <a class="project-card" href="/portfolio/projects/master-travel/">
+        <div class="project-media">
+          <img src="./projects/master-travel/assets/mtg-cover.webp" alt="Master Travel Group website preview" />
+        </div>
+
+        <div class="project-info">
+          <span>02</span>
+          <h2>Master Travel Group</h2>
+        </div>
+      </a>
+
+      <a class="project-card" href="/portfolio/projects/blender/">
+  <div class="project-media">
+     <img src="./projects/blender/assets/blender-cover.webp" alt="Blender Cover" />
+  </div>
+
+  <div class="project-info">
+    <span>03</span>
+    <h2>Blender</h2>
+  </div>
+</a>
+
+      <a class="project-card" href="/portfolio/projects/webxr-classroom/">
+  <div class="project-media">
+     <img src="./projects/webxr-classroom/assets/webxr-classroom-cover.webp" alt="Webxr-classroom Cover" />
+  </div>
+
+  <div class="project-info">
+    <span>04</span>
+    <h2>WebXR Virtual Classroom</h2>
+  </div>
+</a>
+
+<a class="project-card" href="/portfolio/projects/rugby-ios-apps/">
+  <div class="project-media">
+     <img src="./projects/rugby-ios-apps/assets/rugby-ios-cover.webp" alt="Indeed Ireland redesign preview" />
+    
+  </div>
+
+  <div class="project-info">
+    <span>05</span>
+    <h2>Rugby iOS Apps</h2>
+  </div>
+</a>
+
+       <a class="project-card" href="/portfolio/projects/indeed-redesign/">
+  <div class="project-media">
+    <img src="./projects/indeed-redesign/assets/indeed-cover.webp" alt="Indeed Ireland redesign preview" />
+  </div>
+
+  <div class="project-info">
+    <span>06</span>
+    <h2>Indeed Ireland Redesign</h2>
+  </div>
+</a>
+
+      <a class="project-card" href="/portfolio/projects/career-filter/">
+  <div class="project-media">
+    <img src="./projects/career-filter/assets/career-filter-cover.webp" alt="Career Filter website preview" />
+  </div>
+
+  <div class="project-info">
+    <span>07</span>
+    <h2>Career Filter</h2>
+  </div>
+</a>
+
+    <a class="project-card" href="/portfolio/projects/p5js/">
+  <div class="project-media">
+    <img src="./projects/p5js/assets/p5js-cover.webp" alt="p5.js creative coding sketches preview" />
+  </div>
+
+  <div class="project-info">
+    <span>08</span>
+    <h2>p5.js Creative Coding</h2>
+  </div>
+</a>
+    </div>
+  </section>
+  
+
+  <section class="about" id="about">
+  <div class="about-card">
+    <div class="about-copy">
+      <p class="section-kicker">About</p>
+
+      <h2>
+        Capucine<br />
+        Le Bloa
+      </h2>
+
+      <p class="about-text">
+        I’m a creative technologist interested in interactive experiences that
+        make people move, connect, play, learn and feel something.
+      </p>
+
+      <p class="about-subtext">
+         My work sits between sports tech, storytelling, creative coding,
+         interactive media and tools built for real people.
+      </p>
+    </div>
+
+    <div class="about-signals" aria-hidden="true">
+      <span>Sport experiences</span>
+      <span>Interactive systems</span>
+      <span>Interactive experiences</span>
+      <span>Storytelling</span>
+      <span>Creative coding</span>
+    </div>
+
+    <div class="about-photo-wrap">
+      <img src="/images/profile.png" alt="Capucine Le Bloa" class="about-photo" />
+    </div>
+  <button class="about-easter-egg" type="button" aria-label="More about me">
+  <span class="egg-symbol">?</span>
+  <span class="egg-label">more about me</span>
+</button>
+
+<div class="about-panel" aria-hidden="true">
+  <button class="about-panel-close" type="button">Close</button>
+
+  <p class="section-kicker">More about me</p>
+
+  <h3>The slightly longer version</h3>
+
+  <p>
+    I’m drawn to digital experiences that don’t just work, they feel good.
+    I love that moment when an interface suddenly makes sense, when design and
+    technology come together naturally.
+  </p>
+
+  <p>
+    I’m especially interested in the future of sport experiences: how technology
+    could change the way fans watch, feel, share and connect around live events.
+    Rugby, F1 and sport culture are big sources of inspiration for me.
+  </p>
+
+  <p>
+    I like building things that feel useful, playful and human. The kind of work
+    I want to make is not only functional it should make people curious, bring
+    them together, or simply make them smile.
+  </p>
+
+  <p>
+    I’m still learning, still experimenting, and still figuring out exactly where
+    I fit. But I know I want to build experiences that people remember because of
+    how they made them feel.
+  </p>
+
+  <div class="about-mini-grid">
+    <div>
+      <span>Education</span>
+      <p>MSc Interactive Media<br>BA Information & Communication</p>
+    </div>
+
+    <div>
+      <span>Currently into</span>
+      <p>Interactive experiences<br>Creative coding</p>
+    </div>
+  </div>
+</div>
+
+  </div>
+</section>
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <p class="section-kicker">Contact</p>
+
+    <h2>
+  Let’s build interactive<br />
+  experiences that feel alive.
+</h2>
+
+    <div class="contact-links">
+      <a href="mailto:capucinelebloa@gmail.com">capucinelebloa@gmail.com</a>
+      <a href="/portfolio/files/CapucineLeBloa_CV.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+      <a href="https://www.linkedin.com/in/capucine-le-bloa-1a2306221" target="_blank">LinkedIn</a>
+    </div>
+
+    <footer class="site-footer">
+      <p>
+        © Capucine Le Bloa 2026 · Built with Three.js, GSAP & a lot of trial and error.
+      </p>
+
+      <p>
+        Intro interaction inspired by
+        <a
+          href="https://tympanus.net/codrops/2026/06/23/podium-building-a-website-where-running-becomes-storytelling/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Podium’s Codrops case study
+        </a>,
+        then reworked for this portfolio.
+      </p>
+    </footer>
+  </div>
+</section>
+
+
+</main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

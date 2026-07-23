@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>p5.js Creative Coding — Capucine Le Bloa</title>
+
+   <link rel="stylesheet" href="/src/case.css" />
+   <link rel="stylesheet" href="./p5js.css" />
+  </head>
+
+  <body>
+    <header class="project-header">
+      <a href="/portfolio/" class="project-logo">CLB</a>
+
+      <nav class="project-nav">
+        <a href="/portfolio/#projects">Work</a>
+        <a href="/portfolio/#about">About</a>
+        <a href="/portfolio/#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main class="case-page">
+      <section class="case-hero">
+        <p class="case-kicker">
+          Interactive Visual Art · Creative Coding Coursework · Solo
+        </p>
+
+        <h1>p5.js Creative Coding</h1>
+
+        <p class="case-subtitle">
+          Three interactive sketches exploring eased motion, collision detection,
+          generative systems and real-time 3D interaction.
+        </p>
+
+        <div class="case-tags">
+          <span>p5.js</span>
+          <span>JavaScript</span>
+          <span>Creative Coding</span>
+          <span>Generative Art</span>
+          <span>Interactive Systems</span>
+        </div>
+      </section>
+
+      <section class="case-glance">
+        <div>
+          <span>Project type</span>
+          <p>Authoring coursework / creative coding studies</p>
+        </div>
+
+        <div>
+          <span>Timeline</span>
+          <p>September – December 2024</p>
+        </div>
+
+        <div>
+          <span>My role</span>
+          <p>Concept, coding, interaction design and visual experimentation</p>
+        </div>
+
+        <div>
+          <span>Focus</span>
+          <p>Motion, collision, object-oriented systems and interactive 3D</p>
+        </div>
+      </section>
+
+      <section class="case-showcase">
+        <div class="showcase-copy">
+          <p class="case-kicker">Interactive sketches</p>
+
+          <h2>Small code experiments with visible interaction rules.</h2>
+
+          <p>
+            This set of p5.js sketches helped me move from simple 2D interaction towards
+            class-based generative systems and real-time 3D scenes.
+          </p>
+        </div>
+
+        <div class="sketch-viewer">
+          <div class="sketch-tabs">
+            <button
+              class="sketch-tab is-active"
+              data-title="Sketch 1 — Collision + Easing"
+              data-description="A moving circle follows the mouse using lerp-based easing, then changes state when it collides with fixed circles."
+              data-src="https://editor.p5js.org/124122654/full/vNcH3jNl44"
+            >
+              Sketch 1
+            </button>
+
+            <button
+              class="sketch-tab"
+              data-title="Sketch 2 — Generative Bubbles"
+              data-description="An object-oriented bubble system where each bubble grows, fades, drifts and resets independently."
+              data-src="https://editor.p5js.org/124122654/full/6WOb4PhD4"
+            >
+              Sketch 2
+            </button>
+
+            <button
+              class="sketch-tab"
+              data-title="Sketch 3 — Interactive 3D Scene"
+              data-description="A p5.js WEBGL scene with rotating primitives, lighting, orbit controls, keyboard selection and live UI controls."
+              data-src="https://editor.p5js.org/124122654/full/83K8_Naof"
+            >
+              Sketch 3
+            </button>
+          </div>
+
+          <div class="sketch-frame">
+            <iframe
+              class="sketch-iframe"
+              src="https://editor.p5js.org/124122654/full/vNcH3jNl44"
+              title="p5.js Sketch 1 — Collision and Easing"
+              loading="lazy"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="sketch-caption">
+            <h3>Sketch 1 — Collision + Easing</h3>
+            <p>
+              A moving circle follows the mouse using lerp-based easing, then
+              changes state when it collides with fixed circles.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-content">
+        <div class="case-section-title">
+          <p>01</p>
+          <h2>Sketch 1 — Collision + Easing</h2>
+        </div>
+
+        <div class="case-section-text">
+          <p>
+            The first sketch combines eased motion with real-time collision detection.
+            Six fixed circles are generated on load, while a second circle follows the
+            mouse using lerp-based easing.
+          </p>
+
+          <p>
+            Each frame, the sketch calculates distance between the moving circle and the
+            fixed circles. When a collision happens, the moving circle changes state and
+            freezes in place.
+          </p>
+
+          <a
+            class="external-link"
+            href="https://editor.p5js.org/124122654/sketches/vNcH3jNl44"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View Sketch 1 in p5.js editor
+          </a>
+        </div>
+      </section>
+
+      <section class="case-content">
+        <div class="case-section-title">
+          <p>02</p>
+          <h2>Sketch 2 — Generative Bubbles</h2>
+        </div>
+
+       <div class="case-section-text">
+        <p>
+          The second sketch is an object-oriented particle system made of independent
+          bubble objects, each with its own position, size, growth rate, colour and
+          opacity.
+        </p>
+
+        <p>
+          The bubbles drift, grow, fade and reset over time, creating a small
+          interactive generative system with fullscreen and Start/Stop controls.
+        </p>
+
+        <a
+          class="external-link"
+          href="https://editor.p5js.org/124122654/sketches/6WOb4PhD4"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View Sketch 2 in p5.js editor
+        </a>
+      </div>
+      </section>
+
+    <section class="case-content">
+      <div class="case-section-title">
+        <p>03</p>
+        <h2>Sketch 3 — Interactive 3D Scene</h2>
+      </div>
+
+       <div class="case-section-text">
+        <p>
+          The third sketch moves from 2D generative visuals into a real-time 3D scene
+          using p5.js WEBGL mode.
+        </p>
+
+        <p>
+          Four primitives are built from a shared parent class using inheritance. The
+          viewer can orbit the camera, select objects, reshape them with a slider and
+          adjust colours through live controls.
+        </p>
+
+        <a
+          class="external-link"
+          href="https://editor.p5js.org/124122654/sketches/83K8_Naof"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View Sketch 3 in p5.js editor
+        </a>
+      </div>
+      </section>
+
+      <section class="case-content">
+        <div class="case-section-title">
+          <p>04</p>
+          <h2>Reflection</h2>
+        </div>
+
+        <div class="case-section-text">
+          <p>
+            These sketches helped me understand how small mathematical rules can create
+            clear interactive behaviour on screen.
+          </p>
+
+          <p>
+            Together, they show the beginning of my creative coding practice: using
+            code not only to display visuals, but to create movement, behaviour and
+            interaction.
+          </p>
+        </div>
+      </section>
+
+      <section class="next-project">
+        <a href="/portfolio/#projects">Back to projects</a>
+      </section>
+    </main>
+
+    <script type="module" src="./p5js.js"></script>
+  </body>
+</html>

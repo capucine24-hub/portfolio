@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebXR Virtual Classroom — Capucine Le Bloa</title>
+
+    <link rel="stylesheet" href="/src/case.css" />
+    <link rel="stylesheet" href="./webxr-classroom.css" />
+  </head>
+
+  <body>
+    <header class="project-header">
+      <a href="/portfolio/" class="project-logo">CLB</a>
+
+      <nav class="project-nav">
+        <a href="/portfolio/#projects">Work</a>
+        <a href="/portfolio/#about">About</a>
+        <a href="/portfolio/#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main class="case-page">
+      <section class="case-hero">
+        <p class="case-kicker">Academic Interactive 3D Prototype</p>
+
+        <h1>WebXR Virtual Classroom</h1>
+
+        <p class="case-subtitle">
+          An interactive Three.js classroom exploring WebXR, animated characters,
+          spatial audio, video textures and controller-based interaction.
+        </p>
+
+        <div class="case-tags">
+          <span>Three.js</span>
+          <span>WebXR</span>
+          <span>JavaScript</span>
+          <span>Interactive 3D</span>
+          <span>Spatial Audio</span>
+        </div>
+      </section>
+
+      <section class="case-glance">
+        <div>
+          <span>Platform</span>
+          <p>Web browser / WebXR environment</p>
+        </div>
+
+        <div>
+          <span>My role</span>
+          <p>
+            3D scene development, interaction design, animation, lighting and
+            multimedia integration
+          </p>
+        </div>
+
+        <div>
+          <span>Tools</span>
+          <p>
+            Three.js, WebXR, JavaScript, GLTFLoader, OBJLoader, lil-gui,
+            stats.js
+          </p>
+        </div>
+
+        <div>
+          <span>Project type</span>
+          <p>Academic interactive 3D prototype</p>
+        </div>
+      </section>
+
+      <section class="case-showcase">
+        <div class="showcase-copy">
+          <p class="case-kicker">Prototype preview</p>
+
+          <h2>Building an immersive classroom experience in the browser.</h2>
+
+          <p>
+            This prototype explores how browser-based 3D environments can support
+            more immersive learning through space, interaction, animation, sound
+            and multimedia.
+          </p>
+        </div>
+
+        <div class="showcase-video">
+          <video
+            src="./assets/webxr-classroom-preview.mp4"
+            autoplay
+            muted
+            loop
+            playsinline
+            controls
+          ></video>
+        </div>
+      </section>
+
+      <section class="case-content no-divider-after">
+        <div class="case-section-title">
+          <p>01</p>
+          <h2>Project overview</h2>
+        </div>
+
+        <div class="case-section-text">
+          <p>
+            I built a virtual learning environment in Three.js, designed as an
+            interactive WebXR classroom with animated characters, classroom objects,
+            lighting, multimedia content and controller-based interaction.
+          </p>
+
+          <p>
+            The scene opens from the back of the classroom, with desks, a projector
+            screen, textured flooring, light grey walls, a bookshelf and animated
+            characters.
+          </p>
+        </div>
+      </section>
+
+      <section class="feature-strip">
+        <div>
+          <span>3D Scene</span>
+          <p>
+            Classroom environment, desks, projector, screen, bookshelf and
+            characters.
+          </p>
+        </div>
+
+        <div>
+          <span>WebXR</span>
+          <p>
+            VR headset positioning, controller setup and raycasting interaction.
+          </p>
+        </div>
+
+        <div>
+          <span>Multimedia</span>
+          <p>
+            Video texture on the projector screen and spatial teacher audio.
+          </p>
+        </div>
+
+        <div>
+          <span>Debug Tools</span>
+          <p>
+            lil-gui controls and stats.js for real-time performance monitoring.
+          </p>
+        </div>
+      </section>
+
+      <section class="case-content">
+        <div class="case-section-title">
+          <p>02</p>
+          <h2>WebXR interaction</h2>
+        </div>
+
+        <div class="case-section-text">
+          <p>
+            I integrated WebXR using the Immersive Web Emulator, VRButton,
+            controller models and headset positioning.
+          </p>
+
+          <p>
+            One challenge was that the headset position did not match the
+            original camera position at first, so I had to manually adjust the
+            setup to keep the VR view aligned.
+          </p>
+
+          <p>
+            I also implemented raycasting interaction. When the controller ray
+            hits a test cube and the user presses a button, the cube changes
+            colour and can be moved around the scene.
+          </p>
+        </div>
+      </section>
+
+      <section class="case-content">
+        <div class="case-section-title">
+          <p>03</p>
+          <h2>Multimedia & technical build</h2>
+        </div>
+
+        <div class="case-section-text">
+          <p>
+            To make the classroom feel more like a learning environment, I added a
+            video lesson onto the projector screen using a video texture mapped onto a
+            Three.js plane.
+          </p>
+
+          <p>
+            I also integrated spatial teacher audio, so the sound changed depending on
+            the user’s position in the room.
+          </p>
+
+          <p>
+            The scene combined multiple light types, shadows, imported models,
+            shader-based objects, lil-gui controls and stats.js performance monitoring.
+          </p>
+        </div>
+      </section>
+
+      <section class="case-content">
+        <div class="case-section-title">
+          <p>04</p>
+          <h2>Reflection</h2>
+        </div>
+
+        <div class="case-section-text">
+          <p>
+            This project helped me understand how many systems need to work together
+            inside an interactive 3D experience: scene structure, lighting, models,
+            animation, camera controls, shaders, audio, video and WebXR interaction.
+          </p>
+
+          <p>
+            The most valuable part was learning how to debug immersive interaction,
+            especially when the browser view, headset position and controller
+            behaviour did not immediately match.
+          </p>
+        </div>
+      </section>
+
+      <section class="next-project">
+        <a href="/portfolio/#projects">Back to projects</a>
+      </section>
+    </main>
+  </body>
+</html>

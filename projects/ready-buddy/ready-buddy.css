@@ -1,0 +1,318 @@
+:root {
+  --case-bg: #f7f4ec;
+  --case-text: #06173b;
+  --case-accent: #3bb371;
+  --case-panel: #ffffff;
+
+  --rb-red: #ff3b3f;
+  --rb-green-soft: rgba(59, 179, 113, 0.16);
+  --rb-green-line: rgba(59, 179, 113, 0.34);
+  --rb-navy-soft: rgba(6, 23, 59, 0.08);
+}
+
+/* --------------------------------
+   Overall Ready Buddy atmosphere
+-------------------------------- */
+
+body {
+  background:
+    radial-gradient(circle at 78% 12%, rgba(59, 179, 113, 0.16), transparent 28vw),
+    radial-gradient(circle at 12% 88%, rgba(59, 179, 113, 0.1), transparent 26vw),
+    var(--case-bg);
+}
+
+/* faded survival / morse pattern */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+
+  background-image:
+    radial-gradient(circle, rgba(6, 23, 59, 0.05) 1.2px, transparent 1.5px),
+    linear-gradient(90deg, rgba(59, 179, 113, 0.08) 18px, transparent 18px),
+    linear-gradient(rgba(6, 23, 59, 0.025) 1px, transparent 1px);
+  background-size:
+    34px 34px,
+    120px 120px,
+    86px 86px;
+
+  opacity: 0.55;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 16%, black 84%, transparent 100%);
+}
+
+/* --------------------------------
+   Hero
+-------------------------------- */
+
+.case-hero {
+  position: relative;
+  isolation: isolate;
+  min-height: 78vh;
+}
+
+/* huge faded SOS / morse layer */
+.case-hero::before {
+  content: "SOS";
+  position: absolute;
+  right: 4vw;
+  bottom: -4vh;
+  z-index: -1;
+
+  font-size: clamp(150px, 26vw, 420px);
+  line-height: 0.8;
+  font-weight: 900;
+  letter-spacing: -0.14em;
+
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(6, 23, 59, 0.08);
+  opacity: 0.8;
+}
+
+/* small floating morse / path element */
+.case-hero::after {
+  content: "· · ·  — — —  · · ·";
+  position: absolute;
+  right: 12vw;
+  top: 22vh;
+  z-index: -1;
+
+  font-size: clamp(18px, 2vw, 30px);
+  letter-spacing: 0.32em;
+  color: rgba(59, 179, 113, 0.5);
+
+  transform: rotate(-8deg);
+  animation: rbSoftFloat 8s ease-in-out infinite;
+}
+
+.case-hero h1 {
+  max-width: 1000px;
+}
+
+.case-subtitle {
+  max-width: 780px;
+}
+
+.case-tags span {
+  background: rgba(255, 255, 255, 0.52);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.case-tags span:nth-child(1),
+.case-tags span:nth-child(2),
+.case-tags span:nth-child(5) {
+  border-color: rgba(59, 179, 113, 0.42);
+}
+
+/* --------------------------------
+   At a glance
+-------------------------------- */
+
+.case-glance {
+  background: rgba(255, 255, 255, 0.62);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.case-glance span {
+  color: var(--case-accent);
+  opacity: 1;
+  font-weight: 900;
+}
+
+/* --------------------------------
+   Showcase section
+-------------------------------- */
+
+.case-showcase {
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(circle at 78% 34%, rgba(59, 179, 113, 0.16), transparent 28%),
+    radial-gradient(circle at 12% 90%, rgba(255, 59, 63, 0.055), transparent 24%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.72));
+}
+
+/* abstract progress / path line */
+.case-showcase::before {
+  content: "";
+  position: absolute;
+  right: -8%;
+  top: 12%;
+  width: 46%;
+  height: 58%;
+  border: 1px solid rgba(59, 179, 113, 0.22);
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  border-radius: 999px;
+  transform: rotate(-18deg);
+}
+
+.showcase-copy h2 {
+  max-width: 760px;
+}
+
+.showcase-links a:first-child {
+  background: var(--case-accent);
+  color: white;
+  border-color: var(--case-accent);
+}
+
+.showcase-links a:first-child:hover {
+  background: var(--case-text);
+  border-color: var(--case-text);
+}
+
+.phone-video-frame {
+  position: relative;
+  z-index: 2;
+}
+
+.phone-video-frame::before {
+  content: "";
+  position: absolute;
+  inset: -32px;
+  z-index: -1;
+  border-radius: 58px;
+
+  background:
+    radial-gradient(circle, rgba(59, 179, 113, 0.32), transparent 68%);
+  filter: blur(22px);
+}
+
+/* --------------------------------
+   Statement section
+-------------------------------- */
+
+.case-statement {
+  padding: 7vh 6vw;
+  background: var(--case-accent);
+  color: var(--case-bg);
+}
+
+.case-statement h2 {
+  max-width: 1100px;
+  margin: 0;
+}
+
+/* --------------------------------
+   Content sections
+-------------------------------- */
+
+.case-section-title p {
+  color: var(--case-accent);
+  font-weight: 900;
+  opacity: 1;
+}
+
+.case-content {
+  position: relative;
+}
+
+.case-content::before {
+  content: "";
+  position: absolute;
+  left: 6vw;
+  bottom: -1px;
+  width: 90px;
+  height: 1px;
+  background: rgba(59, 179, 113, 0.55);
+}
+
+.case-content:nth-of-type(even) {
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.22), transparent 45%);
+}
+
+/* --------------------------------
+   Archive
+-------------------------------- */
+
+.case-files {
+  position: relative;
+}
+
+.case-files::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -1px;
+  width: 140px;
+  height: 1px;
+  background: var(--case-accent);
+}
+
+.case-files-buttons button:hover,
+.case-files-buttons a:hover {
+  background: var(--case-accent);
+  border-color: var(--case-accent);
+}
+
+/* --------------------------------
+   Modal
+-------------------------------- */
+
+.case-modal-card {
+  background:
+    radial-gradient(circle at 100% 0%, rgba(59, 179, 113, 0.16), transparent 30%),
+    var(--case-bg);
+}
+
+.case-modal-media img {
+  box-shadow: 0 18px 50px rgba(6, 23, 59, 0.08);
+}
+
+/* --------------------------------
+   Animations
+-------------------------------- */
+
+@keyframes rbSoftFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-8deg);
+  }
+
+  50% {
+    transform: translate3d(-14px, 16px, 0) rotate(-5deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case-hero::after,
+  .phone-video-frame {
+    animation: none;
+  }
+}
+
+/* --------------------------------
+   Mobile
+-------------------------------- */
+
+@media (max-width: 900px) {
+  .case-hero {
+    min-height: auto;
+  }
+
+  .case-hero::before {
+    right: -12vw;
+    bottom: 4vh;
+    font-size: 38vw;
+  }
+
+  .case-hero::after {
+    display: none;
+  }
+
+  .case-showcase::after {
+    display: none;
+  }
+
+  .case-statement {
+    margin: 0 20px 8vh;
+    border-radius: 28px;
+  }
+
+}

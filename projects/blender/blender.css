@@ -1,0 +1,467 @@
+:root {
+  --case-bg: #120f0a;
+  --case-text: #f8efe2;
+  --case-accent: #d98235;
+  --case-panel: #1c160f;
+
+  --blender-card: #f3eadc;
+  --blender-dark: #120f0a;
+  --blender-muted: rgba(248, 239, 226, 0.68);
+  --blender-line: rgba(248, 239, 226, 0.16);
+  --blender-orange: #d98235;
+  --blender-green: #7f9f66;
+  --blender-blue: #8fb8c8;
+  --blender-gold: #c9a45c;
+}
+
+/* --------------------------------
+   Cinematic atmosphere
+-------------------------------- */
+
+body {
+  background:
+    radial-gradient(circle at 82% 10%, rgba(217, 130, 53, 0.18), transparent 28vw),
+    radial-gradient(circle at 12% 82%, rgba(127, 159, 102, 0.12), transparent 28vw),
+    radial-gradient(circle at 88% 88%, rgba(143, 184, 200, 0.08), transparent 26vw),
+    var(--case-bg);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle, rgba(248, 239, 226, 0.08) 1px, transparent 1.5px),
+    linear-gradient(rgba(248, 239, 226, 0.025) 1px, transparent 1px);
+  background-size: 42px 42px, 90px 90px;
+  opacity: 0.42;
+  mask-image: linear-gradient(to bottom, transparent, black 18%, black 82%, transparent);
+}
+
+/* --------------------------------
+   Header / hero
+-------------------------------- */
+
+.project-header {
+  color: var(--case-text);
+}
+
+.case-hero {
+  position: relative;
+  isolation: isolate;
+}
+
+.case-hero::before {
+  content: "SEASONS";
+  position: absolute;
+  right: 2vw;
+  bottom: -6vh;
+  z-index: -1;
+  font-size: clamp(120px, 20vw, 360px);
+  line-height: 0.8;
+  font-weight: 900;
+  letter-spacing: -0.12em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(248, 239, 226, 0.08);
+}
+
+.case-hero::after {
+  content: "";
+  position: absolute;
+  right: 12vw;
+  top: 20vh;
+  z-index: -1;
+  width: clamp(120px, 16vw, 240px);
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 40% 35%, rgba(248, 239, 226, 0.22), transparent 18%),
+    radial-gradient(circle, rgba(217, 130, 53, 0.22), transparent 68%);
+  filter: blur(10px);
+  animation: blenderFloat 9s ease-in-out infinite;
+}
+
+.case-subtitle em {
+  color: var(--blender-gold);
+  font-style: normal;
+}
+
+.case-tags span {
+  border-color: var(--blender-line);
+  color: var(--case-text);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.case-tags span:nth-child(1),
+.case-tags span:nth-child(4),
+.case-tags span:nth-child(5) {
+  border-color: rgba(217, 130, 53, 0.42);
+}
+
+/* --------------------------------
+   Glance
+-------------------------------- */
+
+.case-glance {
+  margin-bottom: 8vh;
+  background: rgba(255, 255, 255, 0.035);
+  border-color: var(--blender-line);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.case-glance div {
+  border-color: var(--blender-line);
+}
+
+.case-glance span {
+  color: var(--blender-gold);
+  opacity: 1;
+  font-weight: 900;
+}
+
+.case-glance p {
+  color: rgba(248, 239, 226, 0.8);
+}
+
+/* --------------------------------
+   Showcase
+-------------------------------- */
+
+.case-showcase {
+  grid-template-columns: minmax(0, 1fr) minmax(440px, 0.95fr);
+  gap: 5vw;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 80% 24%, rgba(143, 184, 200, 0.12), transparent 28%),
+    radial-gradient(circle at 10% 90%, rgba(217, 130, 53, 0.14), transparent 30%),
+    linear-gradient(135deg, rgba(217, 130, 53, 0.12), rgba(127, 159, 102, 0.08)),
+    var(--case-panel);
+  border-color: var(--blender-line);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.35);
+}
+
+.case-showcase::before {
+  content: "";
+  position: absolute;
+  right: -8%;
+  top: -18%;
+  width: 44%;
+  aspect-ratio: 1;
+  border: 1px solid rgba(248, 239, 226, 0.1);
+  border-radius: 999px;
+}
+
+.showcase-copy p {
+  color: rgba(248, 239, 226, 0.78);
+}
+
+.showcase-copy h2 {
+  max-width: 760px;
+  font-size: clamp(42px, 5vw, 76px);
+  line-height: 0.92;
+  letter-spacing: -0.07em;
+}
+
+.showcase-video {
+  position: relative;
+  z-index: 1;
+  padding: 12px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid var(--blender-line);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
+}
+
+.showcase-video::before {
+  content: "";
+  position: absolute;
+  inset: -28px;
+  z-index: -1;
+  border-radius: 42px;
+  background: radial-gradient(circle, rgba(217, 130, 53, 0.18), transparent 68%);
+  filter: blur(22px);
+}
+
+.showcase-video video {
+  display: block;
+  width: 100%;
+  border-radius: 22px;
+  background: black;
+}
+
+/* --------------------------------
+   Content
+-------------------------------- */
+
+.case-section-title p {
+  color: var(--blender-gold);
+  font-weight: 900;
+  opacity: 1;
+}
+
+.case-content {
+  position: relative;
+  border-bottom-color: var(--blender-line);
+}
+
+.case-content::before {
+  content: "";
+  position: absolute;
+  left: 6vw;
+  bottom: -1px;
+  width: 90px;
+  height: 1px;
+  background: var(--case-accent);
+}
+
+.case-section-text p {
+  color: rgba(248, 239, 226, 0.8);
+}
+
+.case-section-text em {
+  color: var(--blender-gold);
+  font-style: normal;
+}
+
+/* --------------------------------
+   Seasons
+-------------------------------- */
+.no-divider-after {
+  border-bottom: 0;
+  padding-bottom: 6vh;
+}
+
+.no-divider-after::before {
+  display: none;
+}
+
+.season-strip {
+  margin: 0 6vw 8vh;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.season-strip div {
+  min-height: 100px;
+  padding: 20px 22px;
+  border-radius: 22px;
+  border: 1px solid rgba(248, 239, 226, 0.12);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.season-strip div:nth-child(1) {
+  background: linear-gradient(145deg, rgba(217, 130, 53, 0.22), rgba(217, 130, 53, 0.045));
+}
+
+.season-strip div:nth-child(2) {
+  background: linear-gradient(145deg, rgba(143, 184, 200, 0.18), rgba(143, 184, 200, 0.045));
+}
+
+.season-strip div:nth-child(3) {
+  background: linear-gradient(145deg, rgba(201, 164, 92, 0.22), rgba(201, 164, 92, 0.045));
+}
+
+.season-strip div:nth-child(4) {
+  background: linear-gradient(145deg, rgba(127, 159, 102, 0.2), rgba(127, 159, 102, 0.045));
+}
+
+.season-strip span {
+  display: block;
+  margin-bottom: 14px;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--blender-gold);
+  font-weight: 900;
+}
+
+.season-strip p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  color: rgba(248, 239, 226, 0.78);
+}
+
+/* --------------------------------
+   Tools
+-------------------------------- */
+
+.tools-section {
+  margin: 0 6vw 8vh;
+  padding: 5vh 0;
+  border-top: 1px solid var(--blender-line);
+  border-bottom: 1px solid var(--blender-line);
+}
+
+.tools-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.tools-list span {
+  border: 1px solid var(--blender-line);
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-size: 12px;
+  font-weight: 900;
+  color: var(--case-text);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+/* --------------------------------
+   Archive / modal
+-------------------------------- */
+
+.case-files {
+  position: relative;
+  border-color: var(--blender-line);
+}
+
+.case-files::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -1px;
+  width: 140px;
+  height: 1px;
+  background: var(--case-accent);
+}
+
+.case-files-buttons button {
+  border-color: var(--blender-line);
+  color: var(--case-text);
+}
+
+.case-files-buttons button:hover {
+  background: var(--case-accent);
+  border-color: var(--case-accent);
+  color: var(--blender-dark);
+  transform: translateY(-2px);
+}
+
+.next-project a {
+  border-color: var(--blender-line);
+  color: var(--case-text);
+}
+
+.next-project a:hover {
+  background: var(--case-accent);
+  color: var(--blender-dark);
+}
+
+.case-modal {
+  background: rgba(18, 15, 10, 0.76);
+}
+
+.case-modal-card {
+  background:
+    radial-gradient(circle at 100% 0%, rgba(217, 130, 53, 0.18), transparent 30%),
+    var(--blender-card);
+  color: var(--blender-dark);
+}
+
+.case-modal-card.has-media {
+  width: min(1040px, 100%);
+}
+
+.case-modal-close {
+  background: var(--case-accent);
+  color: var(--blender-dark);
+  font-weight: 900;
+}
+
+.case-modal-card .case-kicker {
+  color: rgba(18, 15, 10, 0.55);
+}
+
+.case-modal-text {
+  color: rgba(18, 15, 10, 0.78);
+}
+
+.case-modal-media {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.case-modal-media.has-two-images {
+  grid-template-columns: 1fr 1fr;
+}
+
+.case-modal-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  background: white;
+  border: 1px solid rgba(18, 15, 10, 0.12);
+}
+
+/* --------------------------------
+   Animation
+-------------------------------- */
+
+@keyframes blenderFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(-12px, 18px, 0) scale(1.04);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case-hero::after {
+    animation: none;
+  }
+}
+
+/* --------------------------------
+   Mobile
+-------------------------------- */
+
+@media (max-width: 900px) {
+  .case-hero::before {
+    right: -20vw;
+    bottom: 6vh;
+    font-size: 38vw;
+  }
+
+  .case-hero::after {
+    display: none;
+  }
+
+  .case-showcase {
+    grid-template-columns: 1fr;
+  }
+
+  .case-showcase::after {
+    display: none;
+  }
+
+  .season-strip {
+    margin: 0 20px 8vh;
+    grid-template-columns: 1fr;
+  }
+
+  .tools-section {
+    margin: 0 20px 8vh;
+  }
+
+  .case-modal-media.has-two-images {
+    grid-template-columns: 1fr;
+  }
+}
